@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded CLP </title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="./main.js"></script> 
+  
+</head>
+<body>
+  <nav>
+    <div class="bar">
+        <a href="index.html" class="logo"><img src="./images/Drift Icon.png" alt="logo"></a>
+
+        <!--Linking Pages-->
+            
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="fastlane.html">Fastlane</a></li>
+            <li><a href="widget.html">Widget</a></li>
+            <li><a href="embeddedCLP.html">Embedded CLP</a></li>
+            <li><a href="driftIdentify.html">Drift Identify</a></li>
+            <li><a href="gtm.html">GTM</a></li>
+        </ul>
+    </div>                                                                                                                                      `
+  </nav>
+
+
+  <script>  
+    drift.on('ready', function(){
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://geolocation-db.com/json/', true);
+    request.onload = function() {
+     if (this.status >= 200 && this.status < 400) {
+    // Success!
+    var data = JSON.parse(this.response);
+    drift.api.setUserAttributes({
+     custom_country_code: data.country_code,
+     custom_country: data.country_name
+   
+    });
+    var co = data.country_code
+      console.log(data.country_code);
+      console.log(data.country_name);
+   
+       // Get a reference to the iframe element by its ID
+ const iframe = document.getElementById('drift-embed-frame');
+
+// Set the src attribute
+iframe.src = `https://TSEworkshop.drift.click/embed/260504/5047481?attr[custom_country_code]=${co}`;  
+    }
+   };  
+   request.send();
+        });  
+     </script> 
+
+<br>
+<br>
+<br>
+
+<iframe
+id="drift-embed-frame"
+  height="500px"
+  width="500px"
+  frameborder="0"
+></iframe>
+
+</body>
+</html>
