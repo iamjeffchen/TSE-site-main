@@ -22,4 +22,7 @@
 }();
 drift.SNIPPET_VERSION = '0.3.1';
 drift.load('5vfykux36nmr');
+
+drift.on('ready',function(api, payload) {
 drift.api.startInteraction({ interactionId: 342145,goToConversation: false });
+})
