@@ -1,8 +1,6 @@
-//<!-- Start of Async Drift Code - English -->
-
 "use strict";
 
-!function LoadDriftWidget() {
+!function() {
   var t = window.driftt = window.drift = window.driftt || [];
   if (!t.init) {
     if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
@@ -23,9 +21,8 @@
   }
 }();
 drift.SNIPPET_VERSION = '0.3.1';
-drift.load('se38xhp8wtam');
+drift.load('5vfykux36nmr');
 
-
-
-LoadDriftWidget.init();
-
+drift.on('ready',function(api, payload) {
+drift.api.startInteraction({ interactionId: 342145,goToConversation: false });
+})
